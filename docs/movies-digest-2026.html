@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дайджест лучших фильмов 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#13131a;--card:#1a1a24;--card-hover:#22222f;--text:#e8e6e1;--muted:#8a8890;--accent:#c9a84c;--accent2:#e85d30;--teal:#1d9e75;--blue:#4a8fe7;--purple:#7f77dd;--pink:#d4537e;--red:#e24b4a}
+body{font-family:'Onest',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{text-align:center;padding:60px 20px 40px;position:relative}
+header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.tag{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:4px 14px;border-radius:2px;margin-bottom:20px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,56px);font-weight:700;line-height:1.1;margin-bottom:12px;background:linear-gradient(135deg,var(--text) 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:var(--muted);font-size:15px;font-weight:300;max-width:520px;margin:0 auto}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 20px 30px}
+.filter-btn{background:var(--surface);border:1px solid rgba(255,255,255,.06);color:var(--muted);padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;transition:all .25s;font-family:inherit}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.grid{max-width:1100px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.04);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:default;position:relative;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.card-header{padding:20px 20px 0;display:flex;align-items:flex-start;gap:12px}
+.card-number{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);opacity:.4;line-height:1;min-width:30px}
+.card-meta{flex:1}
+.card-title{font-size:18px;font-weight:600;margin-bottom:4px;line-height:1.3}
+.card-original{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:6px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:10px;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px;font-weight:500}
+.badge-platform{background:rgba(201,168,76,.12);color:var(--accent)}
+.badge-genre{background:rgba(127,119,221,.12);color:var(--purple)}
+.badge-status{background:rgba(29,158,117,.15);color:var(--teal)}
+.badge-hot{background:rgba(232,93,48,.15);color:var(--accent2)}
+.card-body{padding:16px 20px;flex:1}
+.card-body p{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300}
+.card-footer{padding:0 20px 16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+.rating{display:flex;align-items:center;gap:4px;color:var(--accent)}
+.rating svg{width:14px;height:14px;fill:var(--accent)}
+.card-date{opacity:.6}
+.trailer-btn{display:inline-flex;align-items:center;gap:6px;margin:12px 20px 0;padding:8px 16px;background:rgba(232,93,48,.12);border:1px solid rgba(232,93,48,.25);border-radius:8px;color:var(--accent2);font-size:12px;font-weight:500;text-decoration:none;transition:all .25s;font-family:inherit;letter-spacing:.3px}
+.trailer-btn:hover{background:rgba(232,93,48,.25);border-color:var(--accent2);transform:scale(1.02)}
+.trailer-btn svg{width:16px;height:16px;fill:var(--accent2);flex-shrink:0}
+.section-title{max-width:1100px;margin:0 auto;padding:30px 20px 16px;font-family:'Playfair Display',serif;font-size:22px;color:var(--accent);opacity:.7;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:8px}
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid rgba(255,255,255,.04)}
+footer span{color:var(--accent)}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.card-number{font-size:22px}h1{font-size:32px}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<a href="index.html" style="display:inline-flex;align-items:center;gap:6px;position:fixed;top:16px;left:16px;z-index:10000;padding:8px 16px;background:rgba(19,19,26,.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.06);border-radius:20px;color:var(--accent);font-size:12px;font-weight:500;text-decoration:none;transition:all .25s;font-family:inherit;letter-spacing:.3px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Кинорадар</a>
+<header>
+<div class="tag">Кинорадар</div>
+<h1>Лучшие фильмы 2026</h1>
+<p style="font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,22px);color:var(--muted);font-weight:700;margin-bottom:8px;opacity:.5;letter-spacing:1px">(январь — март)</p>
+<p class="subtitle">Оскаровские триумфаторы, космический Гослинг, возвращение Томми Шелби и Франкенштейн в двух версиях. С тизерами на русском.</p>
+</header>
+<div class="filters">
+<button class="filter-btn active" onclick="filterCards('all')">Все</button>
+<button class="filter-btn" onclick="filterCards('oscar')">Оскар 2026</button>
+<button class="filter-btn" onclick="filterCards('scifi')">Фантастика</button>
+<button class="filter-btn" onclick="filterCards('horror')">Хоррор</button>
+<button class="filter-btn" onclick="filterCards('drama')">Драма</button>
+<button class="filter-btn" onclick="filterCards('action')">Экшн</button>
+<button class="filter-btn" onclick="filterCards('upcoming')">Скоро</button>
+</div>
+
+<div class="section-title">Оскар 2026 — главные победители</div>
+<div class="grid">
+
+<div class="card" data-tags="oscar drama">
+<div class="card-header"><div class="card-number">01</div><div class="card-meta"><div class="card-title">Битва за битвой</div><div class="card-original">Battle for Battle</div><div class="badges"><span class="badge badge-platform">Warner Bros.</span><span class="badge badge-genre">Драма</span><span class="badge badge-hot">6 Оскаров</span></div></div></div>
+<div class="card-body"><p>Пол Томас Андерсон экранизировал роман Томаса Пинчона «Вайнленд» — и получил свой первый «Оскар» за 14 номинаций. Шесть статуэток, включая лучший фильм и режиссуру. Шон Пенн в роли злодея не приехал на церемонию — был на Украине. Кино о последствиях революционной юности, которое критики назвали шедевром.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%91%D0%B8%D1%82%D0%B2%D0%B0+%D0%B7%D0%B0+%D0%B1%D0%B8%D1%82%D0%B2%D0%BE%D0%B9+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026+Paul+Thomas+Anderson" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Лучший фильм</div><div class="card-date">2025 / Оскар 2026</div></div>
+</div>
+
+<div class="card" data-tags="oscar horror">
+<div class="card-header"><div class="card-number">02</div><div class="card-meta"><div class="card-title">Грешники</div><div class="card-original">Sinners</div><div class="badges"><span class="badge badge-platform">Warner Bros.</span><span class="badge badge-genre">Хоррор / Мюзикл</span><span class="badge badge-hot">4 Оскара / 16 номинаций</span></div></div></div>
+<div class="card-body"><p>Райан Куглер снял музыкальный хоррор-триллер с Майклом Б. Джорданом в двойной роли близнецов — и получил рекордные 16 номинаций на «Оскар». Четыре статуэтки, включая лучшего актёра для Джордана и первый в истории «Оскар» для женщины-оператора. Фильм, который доказал: хорроры достойны главной премии.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%93%D1%80%D0%B5%D1%88%D0%BD%D0%B8%D0%BA%D0%B8+Sinners+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Рекорд номинаций</div><div class="card-date">2025 / Оскар 2026</div></div>
+</div>
+
+<div class="card" data-tags="oscar drama">
+<div class="card-header"><div class="card-number">03</div><div class="card-meta"><div class="card-title">Хамнет</div><div class="card-original">Hamnet</div><div class="badges"><span class="badge badge-platform">В прокате</span><span class="badge badge-genre">Драма</span><span class="badge badge-hot">Оскар: лучшая актриса</span></div></div></div>
+<div class="card-body"><p>Хлоя Чжао сняла историю о жене Шекспира, переживающей гибель сына — и Джесси Бакли стала первой ирландкой, получившей «Оскар» за лучшую женскую роль. Критики спорят о фильме, но признают: Бакли играет так, что забываешь дышать. «Золотой глобус» за лучшую драму подтверждает — это кино, от которого больно.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%A5%D0%B0%D0%BC%D0%BD%D0%B5%D1%82+Hamnet+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Золотой глобус</div><div class="card-date">2025 / Оскар 2026</div></div>
+</div>
+
+</div>
+
+<div class="section-title">Уже в кино и на стримингах</div>
+<div class="grid">
+
+<div class="card" data-tags="scifi">
+<div class="card-header"><div class="card-number">04</div><div class="card-meta"><div class="card-title">Проект «Конец света»</div><div class="card-original">Project Hail Mary</div><div class="badges"><span class="badge badge-platform">Amazon / Кинотеатры</span><span class="badge badge-genre">Научная фантастика</span><span class="badge badge-hot">95% RT / 8.6 IMDb</span></div></div></div>
+<div class="card-body"><p>Райан Гослинг просыпается на межзвёздном корабле за 12 световых лет от Солнца — и не помнит, кто он. Энди Вейр (автор «Марсианина») + Фил Лорд и Кристофер Миллер (авторы «Через вселенные») = научная фантастика, от которой плачут даже физики. Бюджет $200 млн, восторг критиков, IMAX-формат. Главный фильм весны.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%9F%D1%80%D0%BE%D0%B5%D0%BA%D1%82+%D0%9A%D0%BE%D0%BD%D0%B5%D1%86+%D1%81%D0%B2%D0%B5%D1%82%D0%B0+Project+Hail+Mary+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">20 марта 2026</div></div>
+</div>
+
+<div class="card" data-tags="action drama">
+<div class="card-header"><div class="card-number">05</div><div class="card-meta"><div class="card-title">Острые козырьки: Бессмертный</div><div class="card-original">Peaky Blinders: The Immortal Man</div><div class="badges"><span class="badge badge-platform">Netflix</span><span class="badge badge-genre">Криминал / Драма</span><span class="badge badge-hot">7.7 IMDb / 91% RT</span></div></div></div>
+<div class="card-body"><p>Томми Шелби вернулся. Киллиан Мерфи снова в кепке — на этот раз Бирмингем, 1940 год, Вторая мировая. Тим Рот и Барри Кеоган усиливают звёздный десант. Четыре года ожидания после финала сериала — и Стивен Найт не подвёл. Не сиквел, а полноценное возвращение легенды.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%9E%D1%81%D1%82%D1%80%D1%8B%D0%B5+%D0%BA%D0%BE%D0%B7%D1%8B%D1%80%D1%8C%D0%BA%D0%B8+%D0%91%D0%B5%D1%81%D1%81%D0%BC%D0%B5%D1%80%D1%82%D0%BD%D1%8B%D0%B9+Peaky+Blinders+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">20 марта 2026</div></div>
+</div>
+
+<div class="card" data-tags="horror">
+<div class="card-header"><div class="card-number">06</div><div class="card-meta"><div class="card-title">Невеста!</div><div class="card-original">THE BRIDE!</div><div class="badges"><span class="badge badge-platform">Кинотеатры</span><span class="badge badge-genre">Готический хоррор</span><span class="badge badge-hot">3 Оскара</span></div></div></div>
+<div class="card-body"><p>Мэгги Джилленхол переосмысливает историю Франкенштейна: Кристиан Бэйл — одинокое чудовище, Джесси Бакли — воскресшая невеста, которая оказывается опаснее создателя. Чикаго 1930-х, хоррор-мюзикл, буйство безумия. Три «Оскара» за грим, костюмы и работу художника. Кино, которое либо полюбишь, либо возненавидишь — но равнодушным не останешься.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%9D%D0%B5%D0%B2%D0%B5%D1%81%D1%82%D0%B0+THE+BRIDE+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026+%D0%A4%D1%80%D0%B0%D0%BD%D0%BA%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Оскар: грим, костюмы</div><div class="card-date">6 марта 2026</div></div>
+</div>
+
+<div class="card" data-tags="action">
+<div class="card-header"><div class="card-number">07</div><div class="card-meta"><div class="card-title">На помощь!</div><div class="card-original">Send Help</div><div class="badges"><span class="badge badge-platform">Кинотеатры</span><span class="badge badge-genre">Триллер</span><span class="badge badge-hot">Certified Fresh</span></div></div></div>
+<div class="card-body"><p>Сэм Рэйми вернулся к тому, что умеет лучше всего — дьявольскому хаосу. Рэйчел МакАдамс и Дилан О'Брайен — коллеги, застрявшие на необитаемом острове после авиакатастрофы. Злобно умный сценарий, фирменная рэймиевская энергия. Критики в восторге: триллер, которому не нужна помощь.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Send+Help+%D0%9D%D0%B0+%D0%BF%D0%BE%D0%BC%D0%BE%D1%89%D1%8C+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026+Sam+Raimi" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">Январь 2026</div></div>
+</div>
+
+<div class="card" data-tags="horror">
+<div class="card-header"><div class="card-number">08</div><div class="card-meta"><div class="card-title">28 лет спустя: Костяной храм</div><div class="card-original">28 Years Later: The Bone Temple</div><div class="badges"><span class="badge badge-platform">Кинотеатры</span><span class="badge badge-genre">Хоррор</span><span class="badge badge-hot">92% RT</span></div></div></div>
+<div class="card-body"><p>Ниа ДаКоста («Кэндимен») продолжает зомби-сагу — и, возможно, снимает лучшую часть франшизы. Рэйф Файнс возвращается как доктор Келсон. В прокате фильм не взлетел, но 92% на Rotten Tomatoes говорят сами за себя — это то кино, которое найдёт свою аудиторию на стримингах.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=28+%D0%BB%D0%B5%D1%82+%D1%81%D0%BF%D1%83%D1%81%D1%82%D1%8F+%D0%9A%D0%BE%D1%81%D1%82%D1%8F%D0%BD%D0%BE%D0%B9+%D1%85%D1%80%D0%B0%D0%BC+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">2026</div></div>
+</div>
+
+<div class="card" data-tags="horror">
+<div class="card-header"><div class="card-number">09</div><div class="card-meta"><div class="card-title">Дракула</div><div class="card-original">Dracula</div><div class="badges"><span class="badge badge-platform">Кинотеатры</span><span class="badge badge-genre">Готический хоррор</span><span class="badge badge-status">В прокате</span></div></div></div>
+<div class="card-body"><p>Кэлеб Лэндри Джонс играет принца XV века, который после убийства жены отрекается от Бога и обретает проклятие бессмертия. Кристоф Вальц, Дэнни Элфман за саундтрек. Не классический ужастик, а готический роман с эмоциональным зарядом. Критики хвалят атмосферу, но жалуются на непоследовательный тон.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%94%D1%80%D0%B0%D0%BA%D1%83%D0%BB%D0%B0+Dracula+2026+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Fresh</div><div class="card-date">2026</div></div>
+</div>
+
+<div class="card" data-tags="drama">
+<div class="card-header"><div class="card-number">10</div><div class="card-meta"><div class="card-title">Секретный агент</div><div class="card-original">I'm Still Here (Ainda Estou Aqui)</div><div class="badges"><span class="badge badge-platform">В прокате</span><span class="badge badge-genre">Драма</span><span class="badge badge-hot">Золотой глобус</span></div></div></div>
+<div class="card-body"><p>Вагнер Моура получил «Золотой глобус» за лучшую мужскую роль в этой бразильской драме, номинированной на «Оскар» за лучший иностранный фильм. Критики называют его работу одной из лучших мужских ролей десятилетия. Кино, которое тихо, но мощно заявило о себе на мировой сцене.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%A1%D0%B5%D0%BA%D1%80%D0%B5%D1%82%D0%BD%D1%8B%D0%B9+%D0%B0%D0%B3%D0%B5%D0%BD%D1%82+Ainda+Estou+Aqui+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Золотой глобус</div><div class="card-date">2025-2026</div></div>
+</div>
+
+<div class="card" data-tags="horror action">
+<div class="card-header"><div class="card-number">11</div><div class="card-meta"><div class="card-title">Я иду искать 2</div><div class="card-original">Ready or Not 2: Here I Come</div><div class="badges"><span class="badge badge-platform">Кинотеатры</span><span class="badge badge-genre">Хоррор / Комедия</span><span class="badge badge-status">В прокате</span></div></div></div>
+<div class="card-body"><p>Самара Уивинг снова в платье невесты — но теперь ей предстоит другая охота. Элайджа Вуд, Сара Мишель Геллар, Дэвид Кроненберг (да, ТОТ Кроненберг) в касте. Сиквел культовой чёрной комедии-хоррора 2019 года, от которого не ждали ничего хорошего — а он взял и выстрелил.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%AF+%D0%B8%D0%B4%D1%83+%D0%B8%D1%81%D0%BA%D0%B0%D1%82%D1%8C+2+Ready+or+Not+2+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Сиквел-сюрприз</div><div class="card-date">Март 2026</div></div>
+</div>
+
+</div>
+
+<div class="section-title">Ждём в 2026</div>
+<div class="grid">
+
+<div class="card" data-tags="upcoming scifi">
+<div class="card-header"><div class="card-number">12</div><div class="card-meta"><div class="card-title">День раскрытия</div><div class="card-original">Disclosure Day</div><div class="badges"><span class="badge badge-platform">Universal</span><span class="badge badge-genre">Фантастика</span><span class="badge badge-hot">Спилберг!</span></div></div></div>
+<div class="card-body"><p>Стивен Спилберг снова берётся за НЛО — оригинальная идея мастера, сценарий Дэвида Коппа («Парк Юрского периода»). Эмили Блант, Джош О'Коннор, Колин Фёрт, Колман Доминго. Подробности под грифом секретности. Спилберг + инопланетяне — этого достаточно.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Disclosure+Day+Spielberg+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Ожидание 10/10</div><div class="card-date">12 июня 2026</div></div>
+</div>
+
+<div class="card" data-tags="upcoming scifi">
+<div class="card-header"><div class="card-number">13</div><div class="card-meta"><div class="card-title">История игрушек 5</div><div class="card-original">Toy Story 5</div><div class="badges"><span class="badge badge-platform">Pixar / Disney</span><span class="badge badge-genre">Анимация</span><span class="badge badge-status">Июнь</span></div></div></div>
+<div class="card-body"><p>Помните, как думали, что «История игрушек 3» — идеальный финал? Потом был четвёртый. А теперь — пятый: дети заменяют игрушки на гаджеты, и Базз с Вуди должны спасти положение. Режиссёр Эндрю Стэнтон («ВАЛЛ-И», «В поисках Немо»). Всё может пойти не так, но Pixar всё ещё умеет заставить плакать.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=%D0%98%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F+%D0%B8%D0%B3%D1%80%D1%83%D1%88%D0%B5%D0%BA+5+Toy+Story+5+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Pixar магия</div><div class="card-date">19 июня 2026</div></div>
+</div>
+
+<div class="card" data-tags="upcoming action">
+<div class="card-header"><div class="card-number">14</div><div class="card-meta"><div class="card-title">Суперсвинка</div><div class="card-original">Supergirl: Woman of Tomorrow</div><div class="badges"><span class="badge badge-platform">DC / Warner</span><span class="badge badge-genre">Супергерои</span><span class="badge badge-status">Июнь</span></div></div></div>
+<div class="card-body"><p>Милли Олкок (Рейнира из «Дома дракона») — Кара Зор-Эл. Новая глава вселенной Джеймса Ганна и Питера Сафрана. Супергёрл путешествует по галактике с Крипто-суперпсом и помогает девушке отомстить. По комиксам Тома Кинга — а это обычно значит, что будет больно. В хорошем смысле.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Supergirl+Woman+of+Tomorrow+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Новая DC</div><div class="card-date">26 июня 2026</div></div>
+</div>
+
+<div class="card" data-tags="upcoming horror">
+<div class="card-header"><div class="card-number">15</div><div class="card-meta"><div class="card-title">Мумия</div><div class="card-original">The Mummy</div><div class="badges"><span class="badge badge-platform">Blumhouse</span><span class="badge badge-genre">Хоррор</span><span class="badge badge-status">Апрель</span></div></div></div>
+<div class="card-body"><p>Ли Кронин (режиссёр «Зловещих мертвецов: Восстание») переосмысливает классику Universal как хоррор: семья сталкивается с древней мумией, и начинается цепочка террора. Не приключения а-ля Брендан Фрейзер, а настоящий ужас. Blumhouse + классический монстр = интригующая комбинация.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=The+Mummy+2026+Lee+Cronin+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+%D0%9C%D1%83%D0%BC%D0%B8%D1%8F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Ожидаемый</div><div class="card-date">17 апреля 2026</div></div>
+</div>
+
+<div class="card" data-tags="upcoming action">
+<div class="card-header"><div class="card-number">16</div><div class="card-meta"><div class="card-title">Хищник: Охотники</div><div class="card-original">Predator: Killer Skull</div><div class="badges"><span class="badge badge-platform">Netflix</span><span class="badge badge-genre">Боевик / Фантастика</span><span class="badge badge-status">Лето</span></div></div></div>
+<div class="card-body"><p>Шарлиз Терон, Тэрон Эджертон и Эрик Бана в австралийской глуши. Скорбящая женщина на пешем маршруте становится мишенью безжалостного убийцы. Режиссёр Балтасар Кормакур («Эверест»). Netflix вложился в практические эффекты и съёмки на натуре — ретро-экшн в лучших традициях 90-х.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Predator+Killer+Skull+Charlize+Theron+%D1%80%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9+%D1%82%D1%80%D0%B5%D0%B9%D0%BB%D0%B5%D1%80+2026" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Ожидаемый</div><div class="card-date">Апрель 2026</div></div>
+</div>
+
+</div>
+
+<footer>Собрано с любовью от <span>Мориса</span> | Данные на 26 марта 2026 | Источники: Rotten Tomatoes, IMDb, Кинопоиск, Lenta.ru, Film.ru, Wikipedia</footer>
+
+<script>
+function filterCards(tag){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.card').forEach(c=>{if(tag==='all'){c.style.display='flex';return}c.style.display=(c.dataset.tags||'').includes(tag)?'flex':'none'})}
+document.querySelectorAll('.card').forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(20px)';setTimeout(()=>{c.style.transition='opacity .5s ease, transform .5s ease';c.style.opacity='1';c.style.transform='translateY(0)'},80*i)});
+</script>
+</body>
+</html>

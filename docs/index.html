@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Кинорадар — Дайджесты фильмов и сериалов</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--surface:#13131a;--card:#1a1a24;
+  --text:#e8e6e1;--muted:#8a8890;--accent:#c9a84c;--accent2:#e85d30;
+  --teal:#1d9e75;--blue:#4a8fe7;--purple:#7f77dd;--pink:#d4537e;
+}
+body{font-family:'Onest',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;min-height:100vh}
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* hero */
+.hero{text-align:center;padding:80px 20px 50px;position:relative}
+.hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:300px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.logo{font-family:'Playfair Display',serif;font-size:clamp(40px,8vw,72px);font-weight:700;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,var(--text) 30%,var(--accent) 70%,var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo-sub{font-size:14px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);opacity:.6;margin-bottom:24px}
+.hero-desc{color:var(--muted);font-size:16px;font-weight:300;max-width:540px;margin:0 auto;line-height:1.7}
+
+/* year nav */
+.year-nav{display:flex;justify-content:center;gap:12px;padding:20px 20px 40px;flex-wrap:wrap}
+.year-pill{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:var(--accent);background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);padding:8px 24px;border-radius:30px;text-decoration:none;transition:all .3s}
+.year-pill:hover,.year-pill.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+
+/* section */
+.section{max-width:1000px;margin:0 auto;padding:0 20px 60px}
+.section-year{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);text-align:center;margin-bottom:32px;position:relative}
+.section-year::after{content:'';display:block;width:60px;height:2px;background:var(--accent);margin:12px auto 0;opacity:.3}
+
+/* quarter grid */
+.quarter-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:40px}
+
+/* digest card */
+.digest-card{background:var(--card);border-radius:16px;border:1px solid rgba(255,255,255,.04);padding:28px 24px;transition:all .4s cubic-bezier(.4,0,.2,1);text-decoration:none;color:inherit;display:flex;flex-direction:column;position:relative;overflow:hidden}
+.digest-card:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.12);box-shadow:0 24px 80px rgba(0,0,0,.5)}
+.digest-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:16px 16px 0 0}
+.digest-card.movies::before{background:linear-gradient(90deg,var(--accent2),var(--accent))}
+.digest-card.series::before{background:linear-gradient(90deg,var(--purple),var(--teal))}
+
+.card-icon{font-size:32px;margin-bottom:12px;filter:grayscale(0.2)}
+.card-type{font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;margin-bottom:8px}
+.digest-card.movies .card-type{color:var(--accent2)}
+.digest-card.series .card-type{color:var(--purple)}
+
+.card-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;line-height:1.2}
+.card-period{font-family:'Playfair Display',serif;font-size:15px;color:var(--muted);font-weight:400;opacity:.6;margin-bottom:12px}
+.card-desc{font-size:13px;color:var(--muted);font-weight:300;line-height:1.6;flex:1}
+.card-count{display:inline-flex;align-items:center;gap:4px;margin-top:14px;font-size:12px;color:var(--accent);opacity:.7}
+.card-count svg{width:14px;height:14px;fill:var(--accent)}
+
+.card-arrow{position:absolute;bottom:24px;right:24px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;transition:all .3s}
+.digest-card:hover .card-arrow{background:var(--accent);transform:translateX(4px)}
+.card-arrow svg{width:16px;height:16px;fill:var(--muted);transition:fill .3s}
+.digest-card:hover .card-arrow svg{fill:var(--bg)}
+
+/* coming soon */
+.coming-soon{background:var(--surface);border-radius:16px;border:2px dashed rgba(255,255,255,.06);padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:180px}
+.coming-soon .card-type{color:var(--muted);opacity:.4}
+.coming-soon .card-title{color:var(--muted);opacity:.3;font-size:18px}
+.coming-soon .card-period{opacity:.3}
+
+/* footer */
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid rgba(255,255,255,.04)}
+footer a{color:var(--accent);text-decoration:none}
+footer .heart{color:var(--accent2)}
+
+/* info block */
+.info-block{max-width:700px;margin:0 auto 50px;padding:0 20px}
+.info-box{background:var(--surface);border-radius:12px;border:1px solid rgba(255,255,255,.04);padding:24px 28px}
+.info-box h3{font-family:'Playfair Display',serif;font-size:16px;color:var(--accent);margin-bottom:10px;font-weight:700}
+.info-box p{font-size:13px;color:var(--muted);font-weight:300;line-height:1.7}
+.info-box code{background:rgba(201,168,76,.1);color:var(--accent);padding:1px 6px;border-radius:3px;font-size:12px}
+
+@media(max-width:700px){.quarter-grid{grid-template-columns:1fr}.logo{font-size:40px}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<div class="hero">
+<div class="logo">Кинорадар</div>
+<div class="logo-sub">Дайджесты фильмов и сериалов</div>
+<p class="hero-desc">Ежеквартальные подборки лучшего кино и сериалов — с описаниями, рейтингами и тизерами на русском. Без спойлеров, с характером.</p>
+</div>
+
+<div class="year-nav">
+<a href="#y2026" class="year-pill active">2026</a>
+<a href="#y2027" class="year-pill" style="opacity:.3;pointer-events:none">2027</a>
+</div>
+
+<div class="section" id="y2026">
+<div class="section-year">2026</div>
+
+<div class="quarter-grid">
+
+<a href="movies-digest-2026.html" class="digest-card movies">
+<div class="card-icon">🎬</div>
+<div class="card-type">Кино</div>
+<div class="card-title">Лучшие фильмы</div>
+<div class="card-period">(январь — март)</div>
+<div class="card-desc">Оскаровский триумф «Битвы за битвой», космический Гослинг в «Проекте "Конец света"», возвращение Томми Шелби и два Франкенштейна за один месяц.</div>
+<div class="card-count"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> 16 фильмов</div>
+<div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</a>
+
+<a href="tv-series-digest-2026.html" class="digest-card series">
+<div class="card-icon">📺</div>
+<div class="card-type">Сериалы</div>
+<div class="card-title">Лучшие сериалы</div>
+<div class="card-period">(январь — март)</div>
+<div class="card-desc">Вестерос без драконов, нуарный Кейдж, «Эйфория» наконец-то возвращается, перезапуск «Клиники» и тёмная комедия года от создателя «Патриота».</div>
+<div class="card-count"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> 20 сериалов</div>
+<div class="card-arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+</a>
+
+<div class="coming-soon">
+<div class="card-type">Кино</div>
+<div class="card-title">Лучшие фильмы</div>
+<div class="card-period">(апрель — июнь)</div>
+</div>
+
+<div class="coming-soon">
+<div class="card-type">Сериалы</div>
+<div class="card-title">Лучшие сериалы</div>
+<div class="card-period">(апрель — июнь)</div>
+</div>
+
+<div class="coming-soon">
+<div class="card-type">Кино</div>
+<div class="card-title">Лучшие фильмы</div>
+<div class="card-period">(июль — сентябрь)</div>
+</div>
+
+<div class="coming-soon">
+<div class="card-type">Сериалы</div>
+<div class="card-title">Лучшие сериалы</div>
+<div class="card-period">(июль — сентябрь)</div>
+</div>
+
+<div class="coming-soon">
+<div class="card-type">Кино</div>
+<div class="card-title">Лучшие фильмы</div>
+<div class="card-period">(октябрь — декабрь)</div>
+</div>
+
+<div class="coming-soon">
+<div class="card-type">Сериалы</div>
+<div class="card-title">Лучшие сериалы</div>
+<div class="card-period">(октябрь — декабрь)</div>
+</div>
+
+</div>
+</div>
+
+<div class="info-block">
+<div class="info-box">
+<h3>Как это работает</h3>
+<p>Каждые три месяца здесь появляется новая пара дайджестов — кино и сериалы. Внутри — карточки с описаниями, рейтингами, платформами и ссылками на русские тизеры в YouTube. Фильтры помогают быстро найти нужный жанр. Пустые карточки — это слоты для будущих выпусков. Проект живёт на GitHub Pages.</p>
+</div>
+</div>
+
+<footer>
+<p>Собрано с <span class="heart">♥</span> от <a href="#">Мориса</a> | Кинорадар 2026</p>
+<p style="margin-top:6px;opacity:.4">Данные: Rotten Tomatoes, IMDb, Кинопоиск, Lenta.ru, Afisha, Film.ru</p>
+</footer>
+
+<script>
+document.querySelectorAll('.digest-card, .coming-soon').forEach((c, i) => {
+  c.style.opacity = '0';
+  c.style.transform = 'translateY(24px)';
+  setTimeout(() => {
+    c.style.transition = 'opacity .6s ease, transform .6s ease';
+    c.style.opacity = '1';
+    c.style.transform = 'translateY(0)';
+  }, 120 * i + 300);
+});
+</script>
+</body>
+</html>
