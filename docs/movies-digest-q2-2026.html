@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Дайджест лучших фильмов — Q2 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#13131a;--card:#1a1a24;--card-hover:#22222f;--text:#e8e6e1;--muted:#8a8890;--accent:#c9a84c;--accent2:#e85d30;--teal:#1d9e75;--blue:#4a8fe7;--purple:#7f77dd;--pink:#d4537e;--red:#e24b4a}
+body{font-family:'Onest',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{text-align:center;padding:60px 20px 40px;position:relative}
+header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.tag{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:4px 14px;border-radius:2px;margin-bottom:20px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,56px);font-weight:700;line-height:1.1;margin-bottom:12px;background:linear-gradient(135deg,var(--text) 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:var(--muted);font-size:15px;font-weight:300;max-width:520px;margin:0 auto}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 20px 30px}
+.filter-btn{background:var(--surface);border:1px solid rgba(255,255,255,.06);color:var(--muted);padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;transition:all .25s;font-family:inherit}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.grid{max-width:1100px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.04);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:default;position:relative;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.card-header{padding:20px 20px 0;display:flex;align-items:flex-start;gap:12px}
+.card-number{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);opacity:.4;line-height:1;min-width:30px}
+.card-meta{flex:1}
+.card-title{font-size:18px;font-weight:600;margin-bottom:4px;line-height:1.3}
+.card-original{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:6px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:10px;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px;font-weight:500}
+.badge-platform{background:rgba(201,168,76,.12);color:var(--accent)}
+.badge-genre{background:rgba(127,119,221,.12);color:var(--purple)}
+.badge-status{background:rgba(29,158,117,.15);color:var(--teal)}
+.badge-hot{background:rgba(232,93,48,.15);color:var(--accent2)}
+.card-body{padding:16px 20px;flex:1}
+.card-body p{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300}
+.card-footer{padding:0 20px 16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+.rating{display:flex;align-items:center;gap:4px;color:var(--accent)}
+.rating svg{width:14px;height:14px;fill:var(--accent)}
+.card-date{opacity:.6}
+.trailer-btn{display:inline-flex;align-items:center;gap:6px;margin:12px 20px 0;padding:8px 16px;background:rgba(232,93,48,.12);border:1px solid rgba(232,93,48,.25);border-radius:8px;color:var(--accent2);font-size:12px;font-weight:500;text-decoration:none;transition:all .25s;font-family:inherit;letter-spacing:.3px}
+.trailer-btn:hover{background:rgba(232,93,48,.25);border-color:var(--accent2);transform:scale(1.02)}
+.trailer-btn svg{width:16px;height:16px;fill:var(--accent2);flex-shrink:0}
+.section-title{max-width:1100px;margin:0 auto;padding:30px 20px 16px;font-family:'Playfair Display',serif;font-size:22px;color:var(--accent);opacity:.7;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:8px}
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid rgba(255,255,255,.04)}
+footer span{color:var(--accent)}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.card-number{font-size:22px}h1{font-size:32px}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<a href="index.html" style="display:inline-flex;align-items:center;gap:6px;position:fixed;top:16px;left:16px;z-index:10000;padding:8px 16px;background:rgba(19,19,26,.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.06);border-radius:20px;color:var(--accent);font-size:12px;font-weight:500;text-decoration:none;transition:all .25s;font-family:inherit;letter-spacing:.3px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Кинорадар</a>
+<header>
+<div class="tag">Кинорадар · Q2</div>
+<h1>Лучшие фильмы 2026</h1>
+<p style="font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,22px);color:var(--muted);font-weight:700;margin-bottom:8px;opacity:.5;letter-spacing:1px">(апрель — июнь)</p>
+<p class="subtitle">Второй квартал: байопик Майкла Джексона, Прада возвращается, бэкрумс из мемов на большом экране, Спилберг про НЛО и пятая «История игрушек». С тизерами на русском.</p>
+</header>
+<div class="filters">
+<button class="filter-btn active" onclick="filterCards('all')">Все</button>
+<button class="filter-btn" onclick="filterCards('blockbuster')">Блокбастеры</button>
+<button class="filter-btn" onclick="filterCards('scifi')">Фантастика</button>
+<button class="filter-btn" onclick="filterCards('horror')">Хоррор</button>
+<button class="filter-btn" onclick="filterCards('comedy')">Комедия</button>
+<button class="filter-btn" onclick="filterCards('action')">Экшн</button>
+<button class="filter-btn" onclick="filterCards('family')">Семейное</button>
+</div>
+
+<div class="section-title">Главные премьеры квартала</div>
+<div class="grid">
+
+<div class="card" data-tags="blockbuster drama">
+<div class="card-header"><div class="card-number">01</div><div class="card-meta"><div class="card-title">Майкл</div><div class="card-original">Michael</div><div class="badges"><span class="badge badge-platform">Lionsgate</span><span class="badge badge-genre">Байопик</span><span class="badge badge-hot">$210 млн в США</span></div></div></div>
+<div class="card-body"><p>Антуан Фукуа экранизировал жизнь короля поп-музыки — и роль Майкла Джексона сыграл его родной племянник Джаафар Джексон, пугающе похожий на дядю. Самый кассовый фильм апреля и главное событие сезона: от «Триллера» до судов, без ретуши и с фирменными номерами. Зрители идут в кино как на концерт.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Майкл+Michael+Jackson+2026+русский+трейлер+Фукуа" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Касса №1 апреля</div><div class="card-date">Апрель 2026</div></div>
+</div>
+
+<div class="card" data-tags="blockbuster comedy">
+<div class="card-header"><div class="card-number">02</div><div class="card-meta"><div class="card-title">Дьявол носит Prada 2</div><div class="card-original">The Devil Wears Prada 2</div><div class="badges"><span class="badge badge-platform">20th Century</span><span class="badge badge-genre">Комедия</span><span class="badge badge-hot">$209 млн в США</span></div></div></div>
+<div class="card-body"><p>Мерил Стрип снова надевает Prada: Миранда Пристли воюет с упадком печатной индустрии, а Энди Сакс (Энн Хэтэуэй) теперь по другую сторону баррикад. Критики говорят — не так зубасто, как оригинал, но зрители обожают: ностальгия, наряды и идеальный escape. Почти повторил кассу «Майкла».</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Дьявол+носит+Прада+2+The+Devil+Wears+Prada+2+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Хит зрителей</div><div class="card-date">Май 2026</div></div>
+</div>
+
+<div class="card" data-tags="blockbuster scifi">
+<div class="card-header"><div class="card-number">03</div><div class="card-meta"><div class="card-title">День раскрытия</div><div class="card-original">Disclosure Day</div><div class="badges"><span class="badge badge-platform">Universal</span><span class="badge badge-genre">Фантастика</span><span class="badge badge-hot">Спилберг!</span></div></div></div>
+<div class="card-body"><p>Тот самый фильм, который мы анонсировали зимой — теперь в прокате. Стивен Спилберг впервые за годы снова взялся за НЛО: оригинальная идея мастера, сценарий Дэвида Коппа, ансамбль из Эмили Блант, Джоша О'Коннора и Колмана Доминго. Спилберг и инопланетяне на большом экране — событие, которого ждали все лето.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=День+раскрытия+Disclosure+Day+Spielberg+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Событие лета</div><div class="card-date">12 июня 2026</div></div>
+</div>
+
+<div class="card" data-tags="blockbuster family">
+<div class="card-header"><div class="card-number">04</div><div class="card-meta"><div class="card-title">История игрушек 5</div><div class="card-original">Toy Story 5</div><div class="badges"><span class="badge badge-platform">Pixar / Disney</span><span class="badge badge-genre">Анимация</span><span class="badge badge-hot">Главная касса лета</span></div></div></div>
+<div class="card-body"><p>Тоже из зимнего списка «скоро» — теперь на экранах. Дети меняют игрушки на гаджеты, и Базз с Вуди снова идут спасать положение; режиссёр Эндрю Стэнтон («ВАЛЛ-И»). Две прошлые части собрали больше миллиарда каждая, и пятая — главный претендент на кассовый трон июня. Pixar всё ещё умеет заставить плакать.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=История+игрушек+5+Toy+Story+5+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Pixar магия</div><div class="card-date">19 июня 2026</div></div>
+</div>
+
+</div>
+
+<div class="section-title">Уже в кино и на стримингах</div>
+<div class="grid">
+
+<div class="card" data-tags="horror">
+<div class="card-header"><div class="card-number">05</div><div class="card-meta"><div class="card-title">Бэкрумс</div><div class="card-original">The Backrooms</div><div class="badges"><span class="badge badge-platform">A24</span><span class="badge badge-genre">Хоррор</span><span class="badge badge-hot">$81,5 млн старт</span></div></div></div>
+<div class="card-body"><p>Мем про бесконечные жёлтые коридоры стал настоящим фильмом — и оглушительным сюрпризом проката. 19-летний Кейн Парсонс (тот самый автор вирусных роликов) дебютирует с хоррором про лиминальные пространства; в касте Чиветель Эджиофор и Ренате Реинсве. Критики в восторге: «завораживает ровно настолько, насколько ужасает».</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Бэкрумс+Backrooms+A24+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Сюрприз проката</div><div class="card-date">29 мая 2026</div></div>
+</div>
+
+<div class="card" data-tags="action scifi">
+<div class="card-header"><div class="card-number">06</div><div class="card-meta"><div class="card-title">Мандалорец и Грогу</div><div class="card-original">The Mandalorian and Grogu</div><div class="badges"><span class="badge badge-platform">Lucasfilm</span><span class="badge badge-genre">Фантастика</span><span class="badge badge-hot">Первый Star Wars за годы</span></div></div></div>
+<div class="card-body"><p>Звёздные войны впервые за долгое время вернулись на большой экран — и сразу с любимцами публики. Джон Фавро переносит Дина Джарина и малыша Грогу из сериала в полноценное кино: погони, ретро-вестерн в космосе и максимум того самого тёплого «мандалорского» обаяния. Семейный блокбастер, ради которого Disney перезапустил франшизу в кинотеатрах.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Мандалорец+и+Грогу+The+Mandalorian+and+Grogu+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Возвращение в кино</div><div class="card-date">22 мая 2026</div></div>
+</div>
+
+<div class="card" data-tags="action">
+<div class="card-header"><div class="card-number">07</div><div class="card-meta"><div class="card-title">Смертельная битва 2</div><div class="card-original">Mortal Kombat II</div><div class="badges"><span class="badge badge-platform">Warner Bros.</span><span class="badge badge-genre">Боевик</span><span class="badge badge-hot">65% RT</span></div></div></div>
+<div class="card-body"><p>Турнир продолжается: кровь, фаталити и Хироюки Санада с Таданобу Асано в касте. Критики разделились, но фанаты единодушны — это лучшая экранизация файтинга на сегодня. R-рейтинг, фирменные добивания и ровно то, чего ждали от продолжения. Не высокое кино, но праздник для своих.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Смертельная+битва+2+Mortal+Kombat+II+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Фанатский хит</div><div class="card-date">18 мая 2026</div></div>
+</div>
+
+<div class="card" data-tags="horror comedy">
+<div class="card-header"><div class="card-number">08</div><div class="card-meta"><div class="card-title">Секс и смерть в лагере «Миазма»</div><div class="card-original">Teenage Sex and Death at Camp Miasma</div><div class="badges"><span class="badge badge-platform">NEON</span><span class="badge badge-genre">Хоррор / Комедия</span><span class="badge badge-hot">100% RT</span></div></div></div>
+<div class="card-body"><p>Джейн Шонбрун («Мы все горим ярко») снимает мета-слэшер про режиссёршу, которая пытается реанимировать загибающуюся франшизу про маньяка в летнем лагере. Джиллиан Андерсон, Ханна Эйнбиндер, Джасмин Сэвой Браун. Стопроцентный рейтинг на Rotten Tomatoes — самый обласканный критиками хоррор квартала и едкая любовная записка жанру.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Teenage+Sex+and+Death+at+Camp+Miasma+2026+русский+трейлер+Schoenbrun" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">Май 2026</div></div>
+</div>
+
+<div class="card" data-tags="action drama">
+<div class="card-header"><div class="card-number">09</div><div class="card-meta"><div class="card-title">Он — Бог</div><div class="card-original">Is God Is</div><div class="badges"><span class="badge badge-platform">A24</span><span class="badge badge-genre">Триллер</span><span class="badge badge-hot">97% RT</span></div></div></div>
+<div class="card-body"><p>Алишиа Харрис экранизирует собственную отмеченную премиями пьесу: две сестры отправляются в кровавый квест мести, разбираясь с историей собственной семьи. Кара Янг, Маллори Джонсон и Жанель Монэ превращают античную трагедию в современный южный вестерн. 97% на Rotten Tomatoes — ярость, стиль и боль в идеальной пропорции.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Is+God+Is+2026+Janelle+Monae+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">Май 2026</div></div>
+</div>
+
+<div class="card" data-tags="comedy family">
+<div class="card-header"><div class="card-number">10</div><div class="card-meta"><div class="card-title">Маппеты</div><div class="card-original">The Muppet Show</div><div class="badges"><span class="badge badge-platform">Disney+</span><span class="badge badge-genre">Комедия / Мюзикл</span><span class="badge badge-hot">98% RT</span></div></div></div>
+<div class="card-body"><p>Кермит и компания возвращаются — и, кажется, попадают в точку. За перезапуск отвечают Алекс Тимберс с Сетом Рогеном и Эваном Голдбергом; критики пишут просто: «ощущается ровно так, как надо». 98% на Rotten Tomatoes, фирменный хаос, песни и самоирония. Тёплое лекарство от цинизма для всей семьи.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Маппеты+The+Muppet+Show+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">Весна 2026</div></div>
+</div>
+
+</div>
+
+<div class="section-title">Июнь: на больших экранах</div>
+<div class="grid">
+
+<div class="card" data-tags="action blockbuster">
+<div class="card-header"><div class="card-number">11</div><div class="card-meta"><div class="card-title">Супергёрл</div><div class="card-original">Supergirl: Woman of Tomorrow</div><div class="badges"><span class="badge badge-platform">DC / Warner</span><span class="badge badge-genre">Супергерои</span><span class="badge badge-status">В прокате</span></div></div></div>
+<div class="card-body"><p>Тоже из зимних анонсов — теперь на экранах. Милли Олкок (Рейнира из «Дома Дракона») берёт плащ Кары Зор-Эл в новой вселенной Джеймса Ганна. По мрачному комиксу Тома Кинга: космическое путешествие с Крипто-суперпсом и историей мести, где супергеройство стоит дорого. Заявка DC на свежий тон.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Супергёрл+Supergirl+Woman+of+Tomorrow+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Новая DC</div><div class="card-date">26 июня 2026</div></div>
+</div>
+
+<div class="card" data-tags="action blockbuster">
+<div class="card-header"><div class="card-number">12</div><div class="card-meta"><div class="card-title">Властелины вселенной</div><div class="card-original">Masters of the Universe</div><div class="badges"><span class="badge badge-platform">Amazon MGM</span><span class="badge badge-genre">Фэнтези / Экшн</span><span class="badge badge-status">Июнь</span></div></div></div>
+<div class="card-body"><p>He-Man наконец добрался до большого экрана: Николас Галицин в роли принца Адама, который превращается в самого могущественного воина Этернии против Скелетора. Долгострой, переживший смену студий, всё-таки вышел — яркое героическое фэнтези из детства 80-х в современной обёртке. Одна из главных ставок июньского проката.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Властелины+вселенной+Masters+of+the+Universe+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Долгожданный</div><div class="card-date">Июнь 2026</div></div>
+</div>
+
+<div class="card" data-tags="drama action">
+<div class="card-header"><div class="card-number">13</div><div class="card-meta"><div class="card-title">Смерть Робин Гуда</div><div class="card-original">The Death of Robin Hood</div><div class="badges"><span class="badge badge-platform">Lionsgate</span><span class="badge badge-genre">Драма / Боевик</span><span class="badge badge-status">Июнь</span></div></div></div>
+<div class="card-body"><p>Майкл Сарноски («Тихое место: День первый») отправляет легенду в тёмный финал: израненный, измученный преступлениями Робин Гуд встречает таинственную женщину, которая может стать его искуплением — или гибелью. Хью Джекман и Джоди Комер в мрачной авторской переработке мифа. Не приключение, а почти вестерн о расплате.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Смерть+Робин+Гуда+The+Death+of+Robin+Hood+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Авторский взгляд</div><div class="card-date">Июнь 2026</div></div>
+</div>
+
+<div class="card" data-tags="comedy">
+<div class="card-header"><div class="card-number">14</div><div class="card-meta"><div class="card-title">Очень страшное кино 6</div><div class="card-original">Scary Movie 6</div><div class="badges"><span class="badge badge-platform">Paramount</span><span class="badge badge-genre">Комедия</span><span class="badge badge-status">Июнь</span></div></div></div>
+<div class="card-body"><p>Спустя больше десяти лет франшиза-пародия возвращается, чтобы постебаться над новой волной хорроров — от «Заклятий» до недавних хитов. Братья Уэйанс снова у руля. Грубо, абсурдно и максимально несерьёзно — ровно то, чего ждёшь от «Очень страшного кино». Сеанс для тех, кто соскучился по чистому стёбу в зале.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Очень+страшное+кино+6+Scary+Movie+6+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Возвращение пародии</div><div class="card-date">Июнь 2026</div></div>
+</div>
+
+</div>
+
+<footer>Собрано с любовью от <span>Мориса</span> | Данные на 9 июня 2026 | Источники: Rotten Tomatoes, Box Office Mojo, Variety, Deadline, Кинопоиск, Wikipedia</footer>
+
+<script>
+function filterCards(tag){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.card').forEach(c=>{if(tag==='all'){c.style.display='flex';return}c.style.display=(c.dataset.tags||'').includes(tag)?'flex':'none'})}
+document.querySelectorAll('.card').forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(20px)';setTimeout(()=>{c.style.transition='opacity .5s ease, transform .5s ease';c.style.opacity='1';c.style.transform='translateY(0)'},80*i)});
+</script>
+</body>
+</html>

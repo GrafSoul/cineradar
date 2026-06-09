@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Дайджест лучших сериалов — Q2 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Onest:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0f;--surface:#13131a;--card:#1a1a24;--card-hover:#22222f;--text:#e8e6e1;--muted:#8a8890;--accent:#c9a84c;--accent2:#e85d30;--teal:#1d9e75;--blue:#4a8fe7;--purple:#7f77dd;--pink:#d4537e;--red:#e24b4a}
+body{font-family:'Onest',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+.noise{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:.03;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+header{text-align:center;padding:60px 20px 40px;position:relative}
+header::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent)}
+.tag{display:inline-block;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:4px 14px;border-radius:2px;margin-bottom:20px}
+h1{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,56px);font-weight:700;line-height:1.1;margin-bottom:12px;background:linear-gradient(135deg,var(--text) 40%,var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{color:var(--muted);font-size:15px;font-weight:300;max-width:500px;margin:0 auto}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;padding:10px 20px 30px}
+.filter-btn{background:var(--surface);border:1px solid rgba(255,255,255,.06);color:var(--muted);padding:6px 16px;border-radius:20px;font-size:13px;cursor:pointer;transition:all .25s;font-family:inherit}
+.filter-btn:hover,.filter-btn.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.grid{max-width:1100px;margin:0 auto;padding:0 20px 60px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:20px}
+.card{background:var(--card);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.04);transition:all .35s cubic-bezier(.4,0,.2,1);cursor:default;position:relative;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.1);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.card-header{padding:20px 20px 0;display:flex;align-items:flex-start;gap:12px}
+.card-number{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--accent);opacity:.4;line-height:1;min-width:30px}
+.card-meta{flex:1}
+.card-title{font-size:18px;font-weight:600;margin-bottom:4px;line-height:1.3}
+.card-original{font-size:12px;color:var(--muted);font-style:italic;margin-bottom:6px}
+.badges{display:flex;gap:6px;flex-wrap:wrap}
+.badge{font-size:10px;letter-spacing:.5px;text-transform:uppercase;padding:2px 8px;border-radius:3px;font-weight:500}
+.badge-platform{background:rgba(201,168,76,.12);color:var(--accent)}
+.badge-genre{background:rgba(127,119,221,.12);color:var(--purple)}
+.badge-status{background:rgba(29,158,117,.15);color:var(--teal)}
+.badge-hot{background:rgba(232,93,48,.15);color:var(--accent2)}
+.card-body{padding:16px 20px;flex:1}
+.card-body p{font-size:14px;color:var(--muted);line-height:1.65;font-weight:300}
+.card-footer{padding:0 20px 16px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+.rating{display:flex;align-items:center;gap:4px;color:var(--accent)}
+.rating svg{width:14px;height:14px;fill:var(--accent)}
+.card-date{opacity:.6}
+.trailer-btn{display:inline-flex;align-items:center;gap:6px;margin:12px 20px 0;padding:8px 16px;background:rgba(232,93,48,.12);border:1px solid rgba(232,93,48,.25);border-radius:8px;color:var(--accent2);font-size:12px;font-weight:500;text-decoration:none;transition:all .25s;font-family:inherit;letter-spacing:.3px}
+.trailer-btn:hover{background:rgba(232,93,48,.25);border-color:var(--accent2);transform:scale(1.02)}
+.trailer-btn svg{width:16px;height:16px;fill:var(--accent2);flex-shrink:0}
+.section-title{max-width:1100px;margin:0 auto;padding:30px 20px 16px;font-family:'Playfair Display',serif;font-size:22px;color:var(--accent);opacity:.7;border-bottom:1px solid rgba(255,255,255,.05);margin-bottom:8px}
+footer{text-align:center;padding:40px 20px;color:var(--muted);font-size:12px;border-top:1px solid rgba(255,255,255,.04)}
+footer span{color:var(--accent)}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.card-number{font-size:22px}h1{font-size:32px}}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<a href="index.html" style="display:inline-flex;align-items:center;gap:6px;position:fixed;top:16px;left:16px;z-index:10000;padding:8px 16px;background:rgba(19,19,26,.85);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.06);border-radius:20px;color:var(--accent);font-size:12px;font-weight:500;text-decoration:none;transition:all .25s;font-family:inherit;letter-spacing:.3px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>Кинорадар</a>
+<header>
+<div class="tag">Кинорадар · Q2</div>
+<h1>Лучшие сериалы 2026</h1>
+<p style="font-family:'Playfair Display',serif;font-size:clamp(16px,3vw,22px);color:var(--muted);font-weight:700;margin-bottom:8px;opacity:.5;letter-spacing:1px">(апрель — июнь)</p>
+<p class="subtitle">Второй квартал: драконы вернулись в Вестерос, Хавьер Бардем терроризирует мыс Страха, финал «Хакерш» и живой «Аватар». С тизерами на русском.</p>
+</header>
+<div class="filters">
+<button class="filter-btn active" onclick="filterCards('all')">Все</button>
+<button class="filter-btn" onclick="filterCards('hit')">Хиты сезона</button>
+<button class="filter-btn" onclick="filterCards('fantasy')">Фэнтези</button>
+<button class="filter-btn" onclick="filterCards('drama')">Драма</button>
+<button class="filter-btn" onclick="filterCards('thriller')">Триллер</button>
+<button class="filter-btn" onclick="filterCards('comedy')">Комедия</button>
+</div>
+
+<div class="section-title">Главные премьеры квартала</div>
+<div class="grid">
+
+<div class="card" data-tags="hit fantasy">
+<div class="card-header"><div class="card-number">01</div><div class="card-meta"><div class="card-title">Дом Дракона (сезон 3)</div><div class="card-original">House of the Dragon — Season 3</div><div class="badges"><span class="badge badge-platform">HBO Max</span><span class="badge badge-genre">Фэнтези</span><span class="badge badge-hot">Главное событие</span></div></div></div>
+<div class="card-body"><p>Танец драконов выходит на пик: Таргариены сжигают друг друга в гражданской войне, и третий сезон обещает самые масштабные битвы за всю историю «Игры престолов». Возвращение в Вестерос, которого ждали полтора года — с Эммой Д'Арси и Оливией Кук во главе. Премьера, ради которой HBO держит всё лето.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Дом+Дракона+сезон+3+House+of+the+Dragon+season+3+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Событие сезона</div><div class="card-date">21 июня 2026</div></div>
+</div>
+
+<div class="card" data-tags="hit thriller">
+<div class="card-header"><div class="card-number">02</div><div class="card-meta"><div class="card-title">Мыс страха</div><div class="card-original">Cape Fear</div><div class="badges"><span class="badge badge-platform">Apple TV+</span><span class="badge badge-genre">Триллер</span><span class="badge badge-hot">Эмбер + Бардем</span></div></div></div>
+<div class="card-body"><p>Классика Скорсезе превращается в сериал — и каст звёздный до неприличия. Эми Адамс и Патрик Уилсон играют супругов-адвокатов, чью жизнь переворачивает выход из тюрьмы Макса Кэди — серийного убийцы, которого они когда-то посадили. Хавьер Бардем в роли мстителя обещает один из самых жутких образов года. Шоураннер — Ник Антоска.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Мыс+страха+Cape+Fear+2026+Apple+TV+русский+трейлер+Bardem" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Звёздный каст</div><div class="card-date">5 июня 2026</div></div>
+</div>
+
+<div class="card" data-tags="hit drama comedy">
+<div class="card-header"><div class="card-number">03</div><div class="card-meta"><div class="card-title">Медведь (сезон 5)</div><div class="card-original">The Bear — Season 5</div><div class="badges"><span class="badge badge-platform">FX / Hulu</span><span class="badge badge-genre">Драмеди</span><span class="badge badge-hot">Сезонный ритуал</span></div></div></div>
+<div class="card-body"><p>Июньский дроп «Медведя» давно стал ежегодным ритуалом — и снова в меню. Карми, Сидни и Ричи бьются за звезду Мишлен под аккомпанемент панических атак и семейных травм. Один из самых обсуждаемых сериалов десятилетия: кухонный хаос, который ощущается как личная терапия. Джереми Аллен Уайт всё так же на грани.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Медведь+сезон+5+The+Bear+season+5+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Хит критиков</div><div class="card-date">Июнь 2026</div></div>
+</div>
+
+<div class="card" data-tags="hit fantasy">
+<div class="card-header"><div class="card-number">04</div><div class="card-meta"><div class="card-title">Аватар: Легенда об Аанге (сезон 2)</div><div class="card-original">Avatar: The Last Airbender — Season 2</div><div class="badges"><span class="badge badge-platform">Netflix</span><span class="badge badge-genre">Фэнтези</span><span class="badge badge-status">25 июня</span></div></div></div>
+<div class="card-body"><p>Живой «Аватар» возвращается за второй главой: Аанг осваивает магию земли, а команда движется к Царству Земли и осаде Ба-Синг-Се. Netflix учёл претензии к первому сезону и поднял ставку на масштаб и боевую хореографию. Любимая анимация миллионов снова в плоти — с амбицией наконец сделать всё правильно.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Аватар+Легенда+об+Аанге+сезон+2+Avatar+Last+Airbender+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Возвращение</div><div class="card-date">25 июня 2026</div></div>
+</div>
+
+</div>
+
+<div class="section-title">Уже вышли и идут</div>
+<div class="grid">
+
+<div class="card" data-tags="hit drama">
+<div class="card-header"><div class="card-number">05</div><div class="card-meta"><div class="card-title">Заветы</div><div class="card-original">The Testaments</div><div class="badges"><span class="badge badge-platform">Hulu</span><span class="badge badge-genre">Драма</span><span class="badge badge-hot">Элизабет Мосс</span></div></div></div>
+<div class="card-body"><p>Продолжение «Рассказа служанки» по роману-сиквелу Маргарет Этвуд: теперь в центре — девочки-подростки, восстающие против режима Галаада. Элизабет Мосс возвращается и впервые садится в режиссёрское кресло франшизы. Мрачная, яростная антиутопия, которая держит хватку даже после финала оригинала.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Заветы+The+Testaments+2026+русский+трейлер+Handmaid" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Хит критиков</div><div class="card-date">Апрель 2026</div></div>
+</div>
+
+<div class="card" data-tags="drama">
+<div class="card-header"><div class="card-number">06</div><div class="card-meta"><div class="card-title">Приманка</div><div class="card-original">Bait</div><div class="badges"><span class="badge badge-platform">Apple TV+</span><span class="badge badge-genre">Сатира</span><span class="badge badge-hot">Лучший дебют года</span></div></div></div>
+<div class="card-body"><p>Риз Ахмед играет восходящего актёра, который проходит пробы на роль нового Джеймса Бонда — и сатира на индустрию развлечений превращается в острый, болезненный портрет амбиций и расы в Голливуде. Один из самых обласканных критиками новых сериалов года: умный, нервный и неудобный в самом лучшем смысле.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Bait+Riz+Ahmed+2026+русский+трейлер+сериал" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Certified Fresh</div><div class="card-date">Весна 2026</div></div>
+</div>
+
+<div class="card" data-tags="hit comedy">
+<div class="card-header"><div class="card-number">07</div><div class="card-meta"><div class="card-title">Хакерши (финальный сезон)</div><div class="card-original">Hacks — Final Season</div><div class="badges"><span class="badge badge-platform">HBO Max</span><span class="badge badge-genre">Комедия</span><span class="badge badge-hot">Финал</span></div></div></div>
+<div class="card-body"><p>Джин Смарт и Ханна Эйнбиндер заканчивают одну из самых острых комедий ТВ: Дебора рвётся к сольнику в Мэдисон-сквер-гарден, а отношения наставницы и протеже проходят последнюю проверку на прочность. Прощание, в котором смех и горечь снова неотделимы. Сезон, который наверняка соберёт новую охапку «Эмми».</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Хакерши+Hacks+финальный+сезон+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Хит критиков</div><div class="card-date">Весна 2026</div></div>
+</div>
+
+<div class="card" data-tags="hit drama">
+<div class="card-header"><div class="card-number">08</div><div class="card-meta"><div class="card-title">Распри (сезон 2)</div><div class="card-original">BEEF — Season 2</div><div class="badges"><span class="badge badge-platform">Netflix</span><span class="badge badge-genre">Драма / Антология</span><span class="badge badge-hot">Айзек + Маллиган</span></div></div></div>
+<div class="card-body"><p>Антология А24 о дорожном конфликте, переросшем в саморазрушение, возвращается с новой парой звёзд: Оскар Айзек и Кэри Маллиган в безжалостной истории о привилегиях и взаимной одержимости. Критики называют сезон «неотрывным взглядом на изнанку благополучия» — и снова не дают отвести глаз. Резко, неудобно, блестяще.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Распри+BEEF+сезон+2+2026+русский+трейлер+Netflix" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Хит критиков</div><div class="card-date">Весна 2026</div></div>
+</div>
+
+<div class="card" data-tags="drama">
+<div class="card-header"><div class="card-number">09</div><div class="card-meta"><div class="card-title">Индустрия (сезон 4)</div><div class="card-original">Industry — Season 4</div><div class="badges"><span class="badge badge-platform">HBO</span><span class="badge badge-genre">Драма</span><span class="badge badge-hot">Кит Харингтон</span></div></div></div>
+<div class="card-body"><p>Сериал про молодых акул лондонского инвестбанкинга устраивает себе «жёсткую перезагрузку»: новые декорации, новые хищники. Кит Харингтон в роли финансиста и Кирнан Шипка повышают ставки в этом макиавеллиевском балете жадности. Тот случай, когда нишевая сатира выросла в один из самых нервных и стильных сериалов HBO.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Индустрия+Industry+сезон+4+2026+русский+трейлер+HBO" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Стильный возврат</div><div class="card-date">Весна 2026</div></div>
+</div>
+
+<div class="card" data-tags="comedy">
+<div class="card-header"><div class="card-number">10</div><div class="card-meta"><div class="card-title">Камбэк (финальный сезон)</div><div class="card-original">The Comeback</div><div class="badges"><span class="badge badge-platform">HBO</span><span class="badge badge-genre">Комедия</span><span class="badge badge-status">Финал</span></div></div></div>
+<div class="card-body"><p>Спустя двадцать лет Лиза Кудроу возвращает Валери Чериш — и сериал безжалостно высмеивает индустрию, в которой теперь царит ИИ-сценаристика. Героиня снимается в первом сериале, написанном нейросетью. Едкое, неловкое и пронзительное прощание с одной из самых недооценённых комедий своего времени.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=The+Comeback+Lisa+Kudrow+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Возвращение легенды</div><div class="card-date">Весна 2026</div></div>
+</div>
+
+<div class="card" data-tags="thriller">
+<div class="card-header"><div class="card-number">11</div><div class="card-meta"><div class="card-title">Захват (сезон 3)</div><div class="card-original">The Capture — Season 3</div><div class="badges"><span class="badge badge-platform">BBC / Peacock</span><span class="badge badge-genre">Триллер</span><span class="badge badge-hot">Дипфейки</span></div></div></div>
+<div class="card-body"><p>Британский конспирологический триллер о «коррекции» реальности возвращается на передовую новой войны — против дезинформации, политического вмешательства и дипфейков. Холли Бэкстон снова распутывает дело, где нельзя верить ни одной записи с камеры. Параноидальный, выверенный и пугающе своевременный.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Захват+The+Capture+сезон+3+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Своевременный</div><div class="card-date">Июнь 2026</div></div>
+</div>
+
+<div class="card" data-tags="horror comedy">
+<div class="card-header"><div class="card-number">12</div><div class="card-meta"><div class="card-title">Залив вдовы</div><div class="card-original">Widow's Bay</div><div class="badges"><span class="badge badge-platform">Apple TV+</span><span class="badge badge-genre">Хоррор / Комедия</span><span class="badge badge-status">Новинка</span></div></div></div>
+<div class="card-body"><p>Мэттью Риз («Американцы») держит на себе мрачно-смешной сериал про городок, где живых меньше, чем призраков. Критики отмечают: проект честно отрабатывает и страх, и смех — редкий баланс для хоррор-комедии. Атмосферная новинка для тех, кто любит, когда жутко и забавно одновременно.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Widow%27s+Bay+Matthew+Rhys+2026+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Атмосферная</div><div class="card-date">Весна 2026</div></div>
+</div>
+
+</div>
+
+<div class="section-title">Свежие старты</div>
+<div class="grid">
+
+<div class="card" data-tags="thriller drama">
+<div class="card-header"><div class="card-number">13</div><div class="card-meta"><div class="card-title">Воспламеняющая взглядом</div><div class="card-original">Man on Fire</div><div class="badges"><span class="badge badge-platform">Netflix</span><span class="badge badge-genre">Триллер</span><span class="badge badge-status">30 апреля</span></div></div></div>
+<div class="card-body"><p>Netflix переосмысливает историю про телохранителя и его подопечную в формате напряжённого сериала: бывший оперативник, выжженный изнутри, берётся охранять ребёнка — и оказывается втянут в спираль насилия и искупления. Жёсткий боевик-драма для любителей героев на грани, для которых месть становится единственным языком.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Man+on+Fire+2026+Netflix+русский+трейлер+сериал" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Новый старт</div><div class="card-date">30 апреля 2026</div></div>
+</div>
+
+<div class="card" data-tags="drama thriller">
+<div class="card-header"><div class="card-number">14</div><div class="card-meta"><div class="card-title">Повелитель мух</div><div class="card-original">Lord of the Flies</div><div class="badges"><span class="badge badge-platform">Netflix</span><span class="badge badge-genre">Драма / Мини-сериал</span><span class="badge badge-status">4 мая</span></div></div></div>
+<div class="card-body"><p>Новая экранизация романа Голдинга в формате мини-сериала: компания мальчишек выживает на необитаемом острове и быстро скатывается от игры к дикости. Камерная притча о том, как тонок слой цивилизации, поставленная как напряжённая психологическая драма. Классика, которая в 2026-м звучит неуютно актуально.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Повелитель+мух+Lord+of+the+Flies+2026+Netflix+русский+трейлер" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Новая экранизация</div><div class="card-date">4 мая 2026</div></div>
+</div>
+
+<div class="card" data-tags="drama">
+<div class="card-header"><div class="card-number">15</div><div class="card-meta"><div class="card-title">Звёздный город</div><div class="card-original">Star City</div><div class="badges"><span class="badge badge-platform">Apple TV+</span><span class="badge badge-genre">Драма</span><span class="badge badge-status">29 мая</span></div></div></div>
+<div class="card-body"><p>Apple продолжает делать ставку на престижную драму: «Звёздный город» — новый сериал о людях, амбициях и цене высоких ставок. Фирменная для платформы выверенная постановка и неспешный, цепкий тон. Один из тех тихих стартов конца мая, что легко пропустить — и зря.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Star+City+Apple+TV+2026+русский+трейлер+сериал" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Тихий старт</div><div class="card-date">29 мая 2026</div></div>
+</div>
+
+<div class="card" data-tags="drama">
+<div class="card-header"><div class="card-number">16</div><div class="card-meta"><div class="card-title">Оазис</div><div class="card-original">Oasis</div><div class="badges"><span class="badge badge-platform">Netflix</span><span class="badge badge-genre">Драма</span><span class="badge badge-status">19 июня</span></div></div></div>
+<div class="card-body"><p>Одна из июньских драматических премьер Netflix: «Оазис» закрывает квартал свежим стартом для тех, кто ищет новую историю на лето. Платформа подаёт его как заявку на хит сезона — с прицелом на зрителей, успевших проглотить всё остальное из списка. Стоит держать в закладках.</p></div>
+<a class="trailer-btn" href="https://www.youtube.com/results?search_query=Oasis+Netflix+2026+русский+трейлер+сериал" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 00.5 6.2 31.9 31.9 0 000 12a31.9 31.9 0 00.5 5.8A3 3 0 002.6 20c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.2c.3-1.8.5-3.8.5-5.8s-.2-4-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>Тизер на русском — YouTube</a>
+<div class="card-footer"><div class="rating"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg> Премьера лета</div><div class="card-date">19 июня 2026</div></div>
+</div>
+
+</div>
+
+<footer>Собрано с любовью от <span>Мориса</span> | Данные на 9 июня 2026 | Источники: Rotten Tomatoes, Metacritic, TVLine, Time Out, Deadline, Кинопоиск, Wikipedia</footer>
+
+<script>
+function filterCards(tag){document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));event.target.classList.add('active');document.querySelectorAll('.card').forEach(c=>{if(tag==='all'){c.style.display='flex';return}c.style.display=(c.dataset.tags||'').includes(tag)?'flex':'none'})}
+document.querySelectorAll('.card').forEach((c,i)=>{c.style.opacity='0';c.style.transform='translateY(20px)';setTimeout(()=>{c.style.transition='opacity .5s ease, transform .5s ease';c.style.opacity='1';c.style.transform='translateY(0)'},80*i)});
+</script>
+</body>
+</html>
